@@ -1,0 +1,31 @@
+{
+  "name": "pricecheck",
+  "version": "0.0.0",
+  "description": "Compare Ebay Recently Sold Prices to Walmart Prices",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "debug": "ndb npm run start",
+    "test": "npm run lint && node tests/core/run.js",
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
+  },
+  "license": "ISC",
+  "author": "Ethan Lajeunesse",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.9",
+    "discord.js": "^12.5.3",
+    "ebay-node-api": "^2.8.11",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "walmartio-js": "git+https://github.com/ResellBot/node_walmartio.git"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "eslint-plugin-json": "^1.2.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "ndb": "^1.1.5"
+  }
+}
