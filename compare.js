@@ -10,6 +10,7 @@ module.exports.run = function compare(walmart, ebay) {
 
 	if (walmartPrice > minimumWalmartPrice &&
 		(ebayPrice - COMPARE_PRICE > walmartPrice || walmartPrice * MULTIPLIER < ebayPrice) &&
+		(walmart.offerType && walmart.offerType === 'ONLINE_AND_STORE') &&
 		(!upcCache.find((u) => u === walmart.upc))) {
 		upcCache.push(walmart.upc);
 		return true;
