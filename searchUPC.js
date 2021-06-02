@@ -8,8 +8,6 @@ const cb = (res) => {
 };
 
 module.exports.run = async function searchUPC(UPC, secondTry = false) {
-	if (!UPC)
-		UPC = '050326404334';
 	if (UPC.length < 12)
 		return false;
 
