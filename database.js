@@ -12,8 +12,8 @@ module.exports = {
 	},
 	startTrial: function (user_id) {
 		let expiration = Date.now() + TRIAL_LENGTH;
-		return client.query('INSERT INTO public.trials (user_id, expiration) VALUES ($1, $2)', [user_id, expiration])
-			.then(() => module.exports.allTrials.push({ user_id, expiration }));
+		module.exports.allTrials.push({ user_id, expiration });
+		return client.query('INSERT INTO public.trials (user_id, expiration) VALUES ($1, $2)', [user_id, expiration]);
 	},
 	initiate: async function () {
 		await client.connect().catch((e) => console.log(e));
