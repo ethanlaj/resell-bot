@@ -1,5 +1,7 @@
 const { Client } = require('pg');
-let client = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }});
+const TESTING = false;
+
+let client = new Client({ connectionString: process.env.DATABASE_URL, ssl: TESTING ? { rejectUnauthorized: false } : true});
 
 const TRIAL_LENGTH = 604800000;
 
