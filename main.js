@@ -2,7 +2,9 @@ let findListings = require('./findListings.js').run,
 	compare = require('./compare.js').run,
 	searchUPC = require('./searchUPC.js').run,
 	getUPC = require('./getUPC.js').run,
-	alert = require('./alert.js').run;
+	alert = require('./alert.js').run,
+	database = require('./database.js'),
+	trials = require('./trials.js').run;
 
 const { Client } = require('discord.js');
 const { CATEGORIES } = require('./categories.js');
@@ -11,6 +13,9 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('ready', async () => {
 	console.log('Successfully started application.');
+
+	await database.initiate();
+	trials(client);
 
 	initiate();
 });

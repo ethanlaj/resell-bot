@@ -13,6 +13,8 @@ module.exports.run = async function (ebayProduct) {
 
 	let url = ebayProduct.viewItemURL[0];
 	let res = await rp({ url, transform }).catch((e) => console.log(e));
+	if (!res)
+		return false;
 
 	let text = res.text().replace(/\s/g, '');
 	if (RegExp.test(text))

@@ -17,6 +17,7 @@
     "discord.js": "^12.5.3",
     "ebay-node-api": "^2.8.11",
     "node-fetch": "^2.6.1",
+    "pg": "^8.6.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "walmartio-js": "git+https://github.com/ResellBot/node_walmartio.git"
