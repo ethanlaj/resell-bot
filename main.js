@@ -4,7 +4,8 @@ let findListings = require('./findListings.js').run,
 	getUPC = require('./getUPC.js').run,
 	alert = require('./alert.js').run,
 	database = require('./database.js'),
-	trials = require('./trials.js').run;
+	trials = require('./trials.js').run,
+	updateMessages = require('./updateMessages.js').run;
 
 const { Client } = require('discord.js');
 const { CATEGORIES } = require('./categories.js');
@@ -13,6 +14,8 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('ready', async () => {
 	console.log('Successfully started application.');
+
+	updateMessages(client);
 
 	await database.initiate();
 	trials(client);

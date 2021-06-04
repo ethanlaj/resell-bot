@@ -16,13 +16,13 @@ const embedStart = new MessageEmbed()
 module.exports.run = async function (client) {
 	for (let i = 0; i < database.allTrials.length; i++) {
 		let guild = client.guilds.cache.get('848696206691663892');
-		let member = await guild.members.fetch(database.allTrials[i].user_id);
+		let member = await guild.members.fetch(database.allTrials[i].user_id).catch(() => {});
 
 		if (member && member.roles.cache.get(FREE_TRIAL) &&
             Date.now() >= Number(database.allTrials[i].expiration)) {
 			member.roles.remove(FREE_TRIAL).then(() => {
 				member.send(embedEnd).catch(() => {});
-			});
+			}).catch(() => {});
 		}
 	}
 
