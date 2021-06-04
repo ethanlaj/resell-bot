@@ -22,10 +22,10 @@ module.exports.run = function(client, walmart, ebay, categoryID) {
 		.addField('Walmart Price', formatPrice(walmartPrice))
 		.addField('Ebay Price', formatPrice(ebayPrice))
 		.addField('Price Difference', formatPrice(ebayPrice - walmartPrice))
-		.addField('Walmart Offer Type', walmart.offerType ? walmart.offerType : 'Unknown')
+		.addField('Walmart Offer Type', walmart.offerType ? walmart.offerType : 'IN_STORE_ONLY')
 		.addField('Walmart Product Link', `https://www.walmart.com/ip/${walmart.itemId}`)
 		.addField('Ebay Listing', ebay.viewItemURL)
-		.setColor('GREEN')
+		.setColor(walmart.offerType ? 'GREEN' : 'ORANGE')
 		.setTimestamp()
 		.setFooter('We are not financially responsible for decisions based on these alerts.');
 
