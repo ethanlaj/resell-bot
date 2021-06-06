@@ -5,7 +5,8 @@ let findListings = require('./findListings.js').run,
 	alert = require('./alert.js').run,
 	database = require('./database.js'),
 	trials = require('./trials.js').run,
-	updateMessages = require('./updateMessages.js').run;
+	updateMessages = require('./updateMessages.js').run,
+	getProductInfo = require('./getProductInfo').listen;
 
 const { Client } = require('discord.js');
 const { CATEGORIES } = require('./categories.js');
@@ -14,6 +15,8 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('ready', async () => {
 	console.log('Successfully started application.');
+
+	getProductInfo(client);
 
 	updateMessages(client);
 
