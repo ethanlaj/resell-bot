@@ -33,6 +33,6 @@ module.exports.run = function(client, walmart, ebay, categoryID) {
 		messageData.setImage(`http://www.barcode-generator.org/zint/api.php?bc_number=34&bc_data=${walmart.upc.slice(0, 11)}`);
 
 	console.log('Posted' + count++);
-	client.channels.cache.get(channel).send(messageData);
+	client.channels.cache.get(channel).send(messageData).then((msg) => msg.react('⭐')).catch(() => {});
 
 };
