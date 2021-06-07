@@ -1,15 +1,15 @@
-let findListings = require('./findListings.js').run,
-	compare = require('./compare.js').run,
-	searchUPC = require('./searchUPC.js').run,
-	getUPC = require('./getUPC.js').run,
-	alert = require('./alert.js').run,
-	database = require('./database.js'),
-	trials = require('./trials.js').run,
-	updateMessages = require('./updateMessages.js').run,
-	getProductInfo = require('./getProductInfo').listen;
+let findListings = require('./resellable/findListings.js').run,
+	compare = require('./resellable/compare.js').run,
+	searchUPC = require('./resellable/searchUPC.js').run,
+	getUPC = require('./resellable/getUPC.js').run,
+	alert = require('./resellable/alert.js').run,
+	database = require('./utility/database.js'),
+	trials = require('./utility/trials.js').run,
+	updateMessages = require('./utility/updateMessages.js').run,
+	getProductInfo = require('./employees/getProductInfo.js').listen;
 
 const { Client } = require('discord.js');
-const { CATEGORIES } = require('./categories.js');
+const { CATEGORIES } = require('./resellable/categories.js');
 const client = new Client();
 client.login(process.env.BOT_TOKEN);
 
