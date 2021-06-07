@@ -6,7 +6,8 @@ let findListings = require('./resellable/findListings.js').run,
 	database = require('./utility/database.js'),
 	trials = require('./utility/trials.js').run,
 	updateMessages = require('./utility/updateMessages.js').run,
-	getProductInfo = require('./employees/getProductInfo.js').listen;
+	getProductInfo = require('./employees/getProductInfo.js').listen,
+	checkInStock = require('./in-stock/handle.js').run;
 
 const { Client } = require('discord.js');
 const { CATEGORIES } = require('./resellable/categories.js');
@@ -15,6 +16,8 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('ready', async () => {
 	console.log('Successfully started application.');
+
+	//checkInStock(client);
 
 	getProductInfo(client);
 
