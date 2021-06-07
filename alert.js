@@ -29,6 +29,9 @@ module.exports.run = function(client, walmart, ebay, categoryID) {
 		.setTimestamp()
 		.setFooter('We are not financially responsible for decisions based on these alerts.');
 
+	if (walmart.upc)
+		messageData.setImage(`http://www.barcode-generator.org/zint/api.php?bc_number=34&bc_data=${walmart.upc.slice(0, 11)}`);
+
 	console.log('Posted' + count++);
 	client.channels.cache.get(channel).send(messageData);
 
