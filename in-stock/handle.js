@@ -5,10 +5,11 @@ const CHANNELS = items.channels;
 let checkStock = require('./checkStock.js').run;
 
 module.exports.run = async function (client) {
-	for (let item of ITEMS) {
-		//setInterval(async () => {
-		await checkStock(item.url);
-		/*if (result)
+	await checkStock();
+
+	//for (let item of ITEMS) {
+	//setInterval(async () => {
+	/*if (result)
 			console.log(result);
 		let channel_id = CHANNELS.find((i) => i.key === item.key).channel;
 					let channel = client.channels.cache.get(channel_id);
@@ -16,7 +17,7 @@ module.exports.run = async function (client) {
 					{
 						channel.send(`Back in stock: https://www.walmart.com/ip/${result.itemId}`);
 					}*/
-		//}, 30000);
-	}
+	//}, 30000);
+	//}
 };
 
