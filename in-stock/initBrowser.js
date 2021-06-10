@@ -6,7 +6,7 @@ puppeteer.use(
 	RecaptchaPlugin({
 		provider: {
 			id: '2captcha',
-			token: '45637bb714051b1743f44df38586526e'
+			token: process.env.TWOCAP,
 		},
 		visualFeedback: false
 	})

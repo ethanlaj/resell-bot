@@ -18,7 +18,7 @@ client.login(process.env.BOT_TOKEN);
 client.on('ready', async () => {
 	console.log('Successfully started application.');
 
-	/*await favorite.fetchMessages(client);
+	await favorite.fetchMessages(client);
 	favorite.run(client);
 
 	updateMessages(client);
@@ -27,7 +27,7 @@ client.on('ready', async () => {
 	await database.initiate();
 	trials(client);
 
-	initiate();*/
+	initiate();
 
 	checkInStock(client);
 });

@@ -4,6 +4,11 @@ let RegExp = /<link itemprop="availability" href="\/\/schema.org\/[a-zA-Z]+/;
 
 const ERROR_CHANNEL = '851471341278462003';
 
+function sendToChannel(msg) {
+	let channel = module.exports.client.channels.cache.get(ERROR_CHANNEL);
+	channel.send(msg).catch(() => {});
+}
+
 module.exports.run = async function (client, page) {
 	module.exports.client = client;
 	page = await initPage(page);
@@ -42,8 +47,3 @@ module.exports.run = async function (client, page) {
 	} else
 		return false;
 };
-
-function sendToChannel(msg) {
-	let channel = module.exports.client.channels.cache.get(ERROR_CHANNEL);
-	channel.send(msg).catch(() => {});
-}
