@@ -40,6 +40,9 @@ module.exports.run = async function (client, page) {
 
 	if (RegExp.test(content)) {
 		sendToChannel(RegExp.exec(content)[0].split('schema.org/')[1] + ' at `' + new Date(Date.now()) + '`');
+
+		await page.screenshot({ path: 'inStock.png' });
+
 		return RegExp.exec(content)[0].split('schema.org/')[1] === 'InStock';
 	} else if (content.includes('g-recaptcha')) {
 		sendToChannel('Ran into a captcha, even after recaptcha script was ran at `' + new Date(Date.now()) + '`');

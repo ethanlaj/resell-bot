@@ -1,6 +1,8 @@
-let { MessageEmbed } = require('discord.js');
+let { MessageEmbed, MessageAttachment } = require('discord.js');
 let items = require('./items.js');
 const CHANNELS = items.channels;
+
+const attachment = new MessageAttachment('./inStock.png', 'inStock.png');
 
 module.exports.run = function(client, item) {
 	let split = item.url.split('/');
@@ -17,8 +19,11 @@ module.exports.run = function(client, item) {
 		.addField('URL', url)
 		.addField('Add to Cart URL', addToCartUrl)
 		.setColor('BLUE')
+		.attachFiles(attachment)
+		.setImage('attachment://inStock.png')
 		.setTimestamp()
 		.setFooter('We are not financially responsible for decisions based on these alerts.');
 
 	channel.send('@everyone', { embed: messageData });
 };
+
