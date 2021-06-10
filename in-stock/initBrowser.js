@@ -1,9 +1,18 @@
-const randomUserAgent = require('random-useragent');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
+const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
+puppeteer.use(
+	RecaptchaPlugin({
+		provider: {
+			id: '2captcha',
+			token: process.env.TWOCAP,
+		},
+		visualFeedback: false
+	})
+);
 
-module.exports.run = async function (url) {
+module.exports.run = async function () {
 	let options = {
 		headless: true,
 		args: ['--no-sandbox']
@@ -13,25 +22,5 @@ module.exports.run = async function (url) {
 	}
 	let browser = await puppeteer.launch(options);
 
-	let page = await browser.newPage();
-
-	const userAgent = randomUserAgent.getRandom();
-	const UA = userAgent;
-
-	await page.setViewport({
-		width: 1920 + Math.floor(Math.random() * 100),
-		height: 3000 + Math.floor(Math.random() * 100),
-		deviceScaleFactor: 1,
-		hasTouch: false,
-		isLandscape: false,
-		isMobile: false,
-	});
-
-	await page.setUserAgent(UA);
-	await page.setJavaScriptEnabled(true);
-	await page.setDefaultNavigationTimeout(0);
-
-
-	await page.goto(url);
-	return page;
+	return browser;
 };
