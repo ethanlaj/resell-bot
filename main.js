@@ -7,7 +7,6 @@ let findListings = require('./resellable/findListings.js').run,
 	trials = require('./utility/trials.js').run,
 	updateMessages = require('./utility/updateMessages.js').run,
 	getProductInfo = require('./employees/getProductInfo.js').listen,
-	checkInStock = require('./in-stock/main.js').run,
 	favorite = require('./utility/favorite.js');
 
 const { Client } = require('discord.js');
@@ -28,8 +27,6 @@ client.on('ready', async () => {
 	trials(client);
 
 	initiate();
-
-	checkInStock(client);
 });
 
 async function initiate () {
