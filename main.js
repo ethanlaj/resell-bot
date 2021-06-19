@@ -3,8 +3,8 @@ let findListings = require('./resellable/findListings.js').run,
 	searchUPC = require('./resellable/searchUPC.js').run,
 	getUPC = require('./resellable/getUPC.js').run,
 	alert = require('./resellable/alert.js').run,
-	database = require('./utility/database.js'),
-	trials = require('./utility/trials.js').run,
+	//database = require('./utility/database.js'),
+	//trials = require('./utility/trials.js').run,
 	updateMessages = require('./utility/updateMessages.js').run,
 	getProductInfo = require('./employees/getProductInfo.js').listen,
 	favorite = require('./utility/favorite.js');
@@ -23,8 +23,8 @@ client.on('ready', async () => {
 	updateMessages(client);
 	getProductInfo(client);
 
-	await database.initiate();
-	trials(client);
+	//await database.initiate();
+	//trials(client);
 
 	initiate();
 });
