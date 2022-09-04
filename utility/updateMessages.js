@@ -1,12 +1,12 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 
 const MESSAGES = [
-	{ channel_id: '849310422720446484', message_id: '850241195393024001', orignal_id: '850231255185358878' },
-	{ channel_id: '849357403338178600', message_id: '850241193915711488', orignal_id: '850233138369658880' },
-	{ channel_id: '849528007936835585', message_id: '850241193727754272', orignal_id: '850242888243085332' }
+	{ channel_id: "849310422720446484", message_id: "850241195393024001", orignal_id: "850231255185358878" },
+	{ channel_id: "849357403338178600", message_id: "850241193915711488", orignal_id: "850233138369658880" },
+	{ channel_id: "849528007936835585", message_id: "850241193727754272", orignal_id: "850242888243085332" }
 ];
 
-const ORIGINALS = '850231111324794880';
+const ORIGINALS = "850231111324794880";
 
 module.exports.run = async function (client) {
 	// get messages in bot-fetch channel
@@ -34,10 +34,10 @@ module.exports.run = async function (client) {
 		if (!channel_message || !original_message)
 			return;
 
-		let split_contents = original_message.content.split('\n');
+		let split_contents = original_message.content.split("\n");
 		channel_message.edit(new MessageEmbed()
 			.setTitle(split_contents[0])
-			.setDescription(split_contents.splice(1).join('\n'))
+			.setDescription(split_contents.splice(1).join("\n"))
 		);
 	}
 };

@@ -1,12 +1,12 @@
-let { MessageEmbed, MessageAttachment } = require('discord.js');
-let items = require('./items.js');
+let { MessageEmbed, MessageAttachment } = require("discord.js");
+let items = require("./items.js");
 const CHANNELS = items.channels;
 
-const attachment = new MessageAttachment('./inStock.png', 'inStock.png');
+const attachment = new MessageAttachment("./inStock.png", "inStock.png");
 
 module.exports.run = function(client, item) {
-	let split = item.url.split('/');
-	let title = split[4].replace(new RegExp('-', 'g'), ' ');
+	let split = item.url.split("/");
+	let title = split[4].replace(new RegExp("-", "g"), " ");
 	let url = item.url;
 	let addToCartUrl = `https://affil.walmart.com/cart/buynow?items=${split[5]}`;
 
@@ -14,16 +14,16 @@ module.exports.run = function(client, item) {
 	channel = client.channels.cache.get(channel);
 
 	let messageData = new MessageEmbed()
-		.setTitle('Restock Notification:')
+		.setTitle("Restock Notification:")
 		.setDescription(title)
-		.addField('URL', url)
-		.addField('Add to Cart URL', addToCartUrl)
-		.setColor('BLUE')
+		.addField("URL", url)
+		.addField("Add to Cart URL", addToCartUrl)
+		.setColor("BLUE")
 		.attachFiles(attachment)
-		.setImage('attachment://inStock.png')
+		.setImage("attachment://inStock.png")
 		.setTimestamp()
-		.setFooter('We are not financially responsible for decisions based on these alerts.');
+		.setFooter("We are not financially responsible for decisions based on these alerts.");
 
-	channel.send('@everyone', { embed: messageData });
+	channel.send("@everyone", { embed: messageData });
 };
 

@@ -1,7 +1,7 @@
-let walmart = require('walmartio-js').function;
+let walmart = require("walmartio-js").function;
 
-const url = 'https://developer.api.walmart.com/api-proxy/service/affil/product/v2/items';
-const method = 'GET';
+const url = "https://developer.api.walmart.com/api-proxy/service/affil/product/v2/items";
+const method = "GET";
 
 const cb = (res) => {
 	return res;
@@ -21,7 +21,7 @@ module.exports.run = async function searchUPC(UPC, secondTry = false) {
 
 	let query = `upc=${UPC}`;
 
-	let res = await walmart(cb, url, method, null, query ).catch((e) => console.log(e));
+	let res = await walmart(cb, url, method, null, query).catch((e) => console.log(e));
 	if (res && res.items && res.items[0].itemId) {
 		return res.items[0];
 	}

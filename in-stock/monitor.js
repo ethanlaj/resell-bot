@@ -1,5 +1,5 @@
-let alert = require('./alert.js').run;
-let checkStock = require('./checkStock.js').run;
+let alert = require("./alert.js").run;
+let checkStock = require("./checkStock.js").run;
 
 module.exports.run = async function (client, item, page) {
 	let stock = await checkStock(client, page);

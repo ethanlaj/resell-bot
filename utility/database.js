@@ -1,4 +1,4 @@
-const { Client } = require('pg');
+const { Client } = require("pg");
 
 let client = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }});
 
@@ -8,12 +8,12 @@ module.exports = {
 	allTrials: [],
 	client,
 	getAllTrials: function () {
-		return client.query('SELECT user_id, expiration FROM public.trials');
+		return client.query("SELECT user_id, expiration FROM public.trials");
 	},
 	startTrial: function (user_id) {
 		let expiration = Date.now() + TRIAL_LENGTH;
 		module.exports.allTrials.push({ user_id, expiration });
-		return client.query('INSERT INTO public.trials (user_id, expiration) VALUES ($1, $2)', [user_id, expiration]);
+		return client.query("INSERT INTO public.trials (user_id, expiration) VALUES ($1, $2)", [user_id, expiration]);
 	},
 	initiate: async function () {
 		await client.connect().catch((e) => console.log(e));

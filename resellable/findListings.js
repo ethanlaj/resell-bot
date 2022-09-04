@@ -1,4 +1,4 @@
-const EBAY = require('ebay-node-api');
+const EBAY = require("ebay-node-api");
 
 
 let ebay = new EBAY({
@@ -10,7 +10,7 @@ module.exports.run = async function (category) {
 		categoryId: category,
 		//limit: 10,
 		Condition: 1000,
-		sortOrder: 'StartTimeNewest'
+		sortOrder: "StartTimeNewest"
 	}).catch((e) => console.log(e));
 	/*let data = await ebay.findItemsByKeywords({
 		keywords: 'chlorine',
