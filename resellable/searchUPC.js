@@ -21,7 +21,7 @@ module.exports.run = async function searchUPC(UPC, secondTry = false) {
 
 	let query = `upc=${UPC}`;
 
-	let res = await walmart(cb, url, method, null, query).catch((e) => console.log(e));
+	let res = await walmart(cb, url, method, null, query).catch(() => {});
 	if (res && res.items && res.items[0].itemId) {
 		return res.items[0];
 	}

@@ -12,7 +12,7 @@ module.exports.run = async function (ebayProduct) {
 	console.log("Still running..." + count++);
 
 	let url = ebayProduct.viewItemURL[0];
-	let res = await rp({ url, transform }).catch((e) => console.log(e));
+	let res = await rp({ url, transform }).catch(() => {});
 	if (!res)
 		return false;
 

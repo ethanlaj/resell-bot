@@ -11,7 +11,7 @@ module.exports.run = async function (category) {
 		//limit: 10,
 		Condition: 1000,
 		sortOrder: "StartTimeNewest"
-	}).catch((e) => console.log(e));
+	}).catch(() => {});
 	/*let data = await ebay.findItemsByKeywords({
 		keywords: 'chlorine',
 		Condition: 1000,

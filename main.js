@@ -3,28 +3,24 @@ let findListings = require("./resellable/findListings.js").run,
 	searchUPC = require("./resellable/searchUPC.js").run,
 	getUPC = require("./resellable/getUPC.js").run,
 	alert = require("./resellable/alert.js").run,
-	//database = require('./utility/database.js'),
-	//trials = require('./utility/trials.js').run,
 	updateMessages = require("./utility/updateMessages.js").run,
-	getProductInfo = require("./employees/getProductInfo.js").listen,
-	favorite = require("./utility/favorite.js");
+	messageReactions = require("./utility/messageReactions.js");
 
-const { Client } = require("discord.js");
+const { Client, GatewayIntentBits, Partials } = require("discord.js");
 const { CATEGORIES } = require("./resellable/categories.js");
-const client = new Client();
+
+const client = new Client({
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent],
+	partials: [Partials.Message, Partials.Reaction],
+});
+
 client.login(process.env.BOT_TOKEN);
 
 client.on("ready", async () => {
 	console.log("Successfully started application.");
 
-	await favorite.fetchMessages(client);
-	favorite.run(client);
-
+	messageReactions.run(client);
 	updateMessages(client);
-	getProductInfo(client);
-
-	//await database.initiate();
-	//trials(client);
 
 	initiate();
 });

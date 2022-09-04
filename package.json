@@ -14,23 +14,20 @@
   "author": "Ethan Lajeunesse",
   "dependencies": {
     "cheerio": "^1.0.0-rc.9",
-    "discord.js": "^12.5.3",
-    "ebay-node-api": "^2.8.11",
-    "node-fetch": "^2.6.1",
-    "pg": "^8.6.0",
-    "puppeteer": "^10.0.0",
-    "puppeteer-extra": "^3.1.18",
-    "puppeteer-extra-plugin-recaptcha": "^3.4.0",
-    "puppeteer-extra-plugin-stealth": "^2.7.8",
+    "discord.js": "^14.3.0",
+    "ebay-node-api": "^2.9.0",
+    "node-fetch": "^3.2.10",
+    "pg": "^8.8.0",
+    "puppeteer": "^17.1.0",
+    "puppeteer-extra": "^3.3.4",
+    "puppeteer-extra-plugin-recaptcha": "^3.6.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.1",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
-    "walmartio-js": "git+https://github.com/ResellBot/node_walmartio.git"
+    "walmartio-js": "github:ResellBot/node_walmartio"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
-    "eslint": "^4.19.1",
-    "eslint-plugin-json": "^1.2.1",
-    "eslint-plugin-promise": "^3.8.0",
+    "eslint": "^8.23.0",
     "ndb": "^1.1.5"
   }
 }

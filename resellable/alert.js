@@ -1,13 +1,13 @@
 const CATEGORIES = require("./categories").CATEGORIES;
 
-let { MessageEmbed } = require("discord.js");
+let { EmbedBuilder } = require("discord.js");
 
 const formatter = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 function formatPrice(price) {
 	return formatter.format(price);
 }
 
-let count = 1;
+let count = 0;
 
 module.exports.run = function(client, walmart, ebay, categoryID) {
 	let channel = CATEGORIES.find((i) => i.category === categoryID).channel;
@@ -15,23 +15,26 @@ module.exports.run = function(client, walmart, ebay, categoryID) {
 	let ebayPrice = Number(ebay.sellingStatus[0].currentPrice[0].__value__);
 	let walmartPrice = walmart.salePrice;
 
-	let messageData = new MessageEmbed()
+	let messageData = new EmbedBuilder()
 		.setTitle(walmart.name)
 		.setThumbnail(walmart.largeImage)
-		.addField("UPC", walmart.upc)
-		.addField("Walmart Price", formatPrice(walmartPrice))
-		.addField("Ebay Price", formatPrice(ebayPrice))
-		.addField("Price Difference", formatPrice(ebayPrice - walmartPrice))
-		.addField("Walmart Offer Type", walmart.offerType ? walmart.offerType : "IN_STORE_ONLY")
-		.addField("Walmart Product Link", `https://www.walmart.com/ip/${walmart.itemId}`)
-		.addField("Ebay Listing", ebay.viewItemURL)
-		.setColor(walmart.offerType ? "GREEN" : "ORANGE")
+		.addFields ([
+			{ name: "UPC", value: walmart.upc },
+			{ name: "Walmart Price", value: formatPrice(walmartPrice) },
+			{ name: "Ebay Price", value: formatPrice(ebayPrice) },
+			{ name: "Price Difference", value: formatPrice(ebayPrice - walmartPrice) },
+			{ name: "Walmart Offer Type", value: (walmart.offerType ? walmart.offerType : "IN_STORE_ONLY") },
+			{ name: "Walmart Product Link", value: `https://www.walmart.com/ip/${walmart.itemId}` },
+			{ name: "Ebay Listing", value: ebay.viewItemURL[0] },
+		])
+		// First is green, second is orange. Green color is for products that are sold both online and in store at Walmart.
+		.setColor(walmart.offerType ? [101, 201, 121] : [216, 131, 59])
 		.setTimestamp()
-		.setFooter("We are not financially responsible for decisions based on these alerts.");
+		.setFooter({ text: "We are not financially responsible for decisions based on these alerts." });
 
 	if (walmart.upc)
 		messageData.setImage(`http://www.barcode-generator.org/zint/api.php?bc_number=34&bc_data=${walmart.upc.slice(0, 11)}`);
 
-	console.log("Posted" + count++);
-	client.channels.cache.get(channel).send(walmart.upc, { embed: messageData }).then((msg) => msg.react("⭐")).catch(() => {});
+	client.channels.cache.get(channel).send({ content: walmart.upc, embeds: [messageData] }).then((msg) => msg.react("⭐")).catch((e) => {console.log(e);});
+	console.log("Posted " + ++count);
 };

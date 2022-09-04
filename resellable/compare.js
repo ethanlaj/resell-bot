@@ -2,6 +2,11 @@ const COMPARE_PRICE = 35;
 const MULTIPLIER = 1.5;
 const minimumWalmartPrice = 15;
 
+/*For faster debugging
+const COMPARE_PRICE = 0;
+const MULTIPLIER = 0.1;
+const minimumWalmartPrice = 0;*/
+
 let upcCache = require("./upcCache.js").array;
 
 module.exports.run = function compare(walmart, ebay) {

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 const MESSAGES = [
 	{ channel_id: "849310422720446484", message_id: "850241195393024001", orignal_id: "850231255185358878" },
@@ -35,9 +35,11 @@ module.exports.run = async function (client) {
 			return;
 
 		let split_contents = original_message.content.split("\n");
-		channel_message.edit(new MessageEmbed()
-			.setTitle(split_contents[0])
-			.setDescription(split_contents.splice(1).join("\n"))
-		);
+		channel_message.edit({ embeds: 
+			[new EmbedBuilder()
+				.setTitle(split_contents[0])
+				.setDescription(split_contents.splice(1).join("\n"))
+			]
+		});
 	}
 };
