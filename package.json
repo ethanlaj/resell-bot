@@ -1,6 +1,6 @@
 {
   "name": "pricecheck",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "description": "Compare Ebay Recently Sold Prices to Walmart Prices",
   "main": "main.js",
   "scripts": {
