@@ -2,6 +2,7 @@ Resell bot is a Node.js project and it works by taking data from the Ebay and Wa
 
 ## Discord Server for Notifications
 <a href="https://discord.gg/DeSKEJgkQh"><img src="https://img.shields.io/discord/848696206691663892?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+<iframe src="https://discord.com/widget?id=848696206691663892&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 
 ## Default Criteria for the Alerts
