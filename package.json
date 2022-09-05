@@ -1,5 +1,5 @@
 {
-  "name": "pricecheck",
+  "name": "resellbot",
   "version": "2.0.0",
   "description": "Compare Ebay Recently Sold Prices to Walmart Prices",
   "main": "main.js",
