@@ -1,5 +1,8 @@
 /* eslint-disable line-comment-position */
 
+/* FORMAT:
+	{ category: 'Ebay Category ID', channel: 'Discord Channel ID'}, // Category Name
+*/
 module.exports.CATEGORIES = [
 	//{ category: '20081', channel: '849270047125405716'}, // Antiques
 	//{ category: '550', channel: '849270251563778098'}, // Art

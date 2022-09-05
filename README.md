@@ -11,13 +11,19 @@ Resell bot is a Node.js project and it works by taking data from the Ebay and Wa
 3) Ebay product is listed as condition "new"
 4) Walmart product is (or was) offered in store
 
+## Personal Hosting
 If you want to run your own version of this product, you can change the criteria at the top of the resellable/compare.js file:
 ```javascript
 const COMPARE_PRICE = 35;
 const MULTIPLIER = 1.5;
 const MIN_WALMART_PRICE = 15;
 ```
-Also, make sure you change your server IDs to match your server.
+
+Also, make sure you change server, channel, etc IDs to match your server.
+Check the following files:
+- resellable/categories.js
+- utility/messageReactions.js
+- utility/updateMessages.js
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
