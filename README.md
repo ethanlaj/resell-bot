@@ -1,3 +1,4 @@
+#Resell Bot
 Resell bot is a Node.js project and it works by taking data from the Ebay and Walmart APIs, matching the UPCs of listings from Ebay with Walmart products, and comparing the prices. If an Ebay listing's price was significantly higher, it would notify users in a Discord server about a possible resellable item.
 
 ## Discord Server for Notifications
