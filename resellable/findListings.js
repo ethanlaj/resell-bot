@@ -8,12 +8,15 @@ let ebay = new EBAY({
 module.exports.run = async function (category) {
 	let data = await ebay.findItemsByCategory({
 		categoryId: category,
-		//limit: 10,
 		Condition: 1000,
-		sortOrder: "StartTimeNewest"
+		sortOrder: "StartTimeNewest",
+		//SoldItemsOnly: true,
 	}).catch(() => {});
-	/*let data = await ebay.findItemsByKeywords({
-		keywords: 'chlorine',
+	/*let data = await ebay.findCompletedItems({
+		//keywords: "chlorine",
+		categoryId: category,
+		limit: 10,
+		SoldItemsOnly: true,
 		Condition: 1000,
 	});*/
 	return data[0].searchResult[0].item;
